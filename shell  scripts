@@ -1,0 +1,73 @@
+qiang@qiang:~$ ssh server@192.168.1.205
+server@192.168.1.205's password: 
+Permission denied, please try again.
+server@192.168.1.205's password: 
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 4.2.0-27-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+143 packages can be updated.
+96 updates are security updates.
+
+Last login: Thu Jul  7 16:20:47 2016 from qiang
+server@205:~$ vi haraka
+
+
+
+#! /bin/sh
+
+set -e
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/nginx/sbin
+DESC="haraka daemon"
+NAME=haraka
+DEAMON=/usr/local/bin/haraka
+DEAMON_PATH=/home/server/Haraka
+SCRIPTNAME=/etc/init.d/haraka
+DEAMON_LOG_FILE=/var/log/haraka.log
+DEAMON_PID_FILE=/var/run/haraka.pid
+
+# If the daemon file is not found, terminate the script.
+test -x $DAEMON || exit 0
+
+d_start() {
+  exec $DEAMON -c $DEAMON_PATH > $DEAMON_LOG_FILE 2>&1 &
+  echo $! > /var/run/haraka.pid
+}
+
+d_stop() {
+  exec cat $DEAMON_PID_FILE | while read PID
+  do
+    exec kill -9 $PID
+  done
+}
+
+d_reload() {
+  d_stop
+  d_start
+}
+
+case "$1" in
+  start)
+    echo "Starting $DESC: $NAME"
+    d_start
+  ;;
+  stop)
+    echo "Stopping $DESC: $NAME"
+    d_stop
+  ;;
+  reload)
+    echo "Reloading $DESC configuration..."
+    d_reload
+  ;;
+  restart)
+    echo "Restarting $DESC: $NAME"
+    d_stop
+    d_start
+  ;;
+  *)
+    echo "Usage: $SCRIPTNAME {start|stop|restart|reload}" >&2
+    exit 3
+  ;;
+esac
+exit 0
+
