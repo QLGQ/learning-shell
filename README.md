@@ -1,9 +1,8 @@
-# qlgq
-#!/bin/bas
-#Program:
-# try to calculate 1+2+3+...+ $number user inputs
-#History:
-#2016/07/06 Qiang First release
+!/bin/bas
+Program:
+       try to calculate 1+2+3+...+ $number user inputs
+History:
+2016/07/06 Qiang First release
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
