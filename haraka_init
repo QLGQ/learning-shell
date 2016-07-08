@@ -1,17 +1,17 @@
-qiang@qiang:~$ ssh server@192.168.1.205
-server@192.168.1.205's password: 
-Permission denied, please try again.
-server@192.168.1.205's password: 
-Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 4.2.0-27-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com/
-
-143 packages can be updated.
-96 updates are security updates.
-
-Last login: Thu Jul  7 16:20:47 2016 from qiang
-server@205:~$ vi haraka
-
+#qiang@qiang:~$ ssh server@192.168.1.205
+#server@192.168.1.205's password: 
+#Permission denied, please try again.
+#server@192.168.1.205's password: 
+#Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 4.2.0-27-generic x86_64)
+#
+# * Documentation:  https://help.ubuntu.com/
+#
+#143 packages can be updated.
+#96 updates are security updates.
+#
+#Last login: Thu Jul  7 16:20:47 2016 from qiang
+#server@205:~$ vi haraka
+#
 
 
 #! /bin/sh
